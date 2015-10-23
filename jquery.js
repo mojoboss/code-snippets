@@ -313,6 +313,62 @@ $(document).ready(function() {
 
 
 
+//**************************MORE FROM JQuery UI library*******************
+$(document).ready(function(){
+    $('div').click(function(){
+        $(this).effect('explode');
+    });
+});// this effect is like animation, takes 'explode' as input to create explosion
+//another effect example, makes that div bounce
+		('div').effect('bounce', {times:2}, 200);//that 200 is milli Sec
+//this makes it slide
+		$(this).effect('slide');
+
+
+
+//draggable method makes anything draggable on the screen
+$(document).ready(function(){
+    $('#car').draggable();
+});
+
+
+
+//resizable method makes anything resizable on the screen
+$(document).ready(function(){
+    $('div').resizable();
+});
+
+
+
+
+//thios code piece selects and highlights an item from a list
+$(document).ready(function(){
+    $('ol').selectable();
+});
+
+
+
+//this code piece allows to sort a list by moving the list items
+$(document).ready(function(){
+    $('ol').sortable();
+});
+
+
+
+
+//this creates an accordion, 
+//see here 
+//http://api.jqueryui.com/accordion/
+$(document).ready(function(){
+    $('#menu').accordion();
+});
+
+
+
+
+
+
+
 
 
 
