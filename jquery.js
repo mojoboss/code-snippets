@@ -160,6 +160,75 @@ $(document).ready(function() {
 
 
 
+//MODIFYING html ELEMENTS
+/*
+Finally, we can update the contents of our HTML elements—that is, the bit 
+between the opening and closing tags—using the .html() and .val()functions.
+
+.html() can be used to set the contents of the first element match it finds. 
+For instance,
+
+$('div').html();
+will get the HTML contents of the firstdiv it finds, and
+
+$('div').html("I love jQuery!");
+will set the contents of the first div it finds to "I love jQuery!"
+
+.val() is used to get the value of form elements. For example,
+$('input:checkbox:checked').val();
+would get the value of the first checked checkbox that jQuery finds.
+*/
+//example 1
+$(document).ready(function(){
+    $('p').html('jQuery magic in action!'); 
+});
+
+//example2
+$(document).ready(function(){
+    $('#button').click(function(){
+        var $val = $('input[name="checkListItem"]').val();
+         $('.list').append('<div class="item">' + toAdd + '</div>');
+         //$('.list').html($val);
+    });
+});// this selects the input tab using a name, and adds its value to a list 
+   //element inside a div element/ html() function just adds the text 
+   //in this case
+//Removing those ".items" which were added by jQuery
+/*
+$('.item').click(function() {
+    $(this).remove();
+});
+#####################THIS WONT WORK############################
+jQuery looks for all the .items when the DOM is loaded, so by the time your
+document is ready, it's already decided there are no .items to .remove(), and
+the code won't work.
+*/
+//##################SOLUTION###################################
+/*
+For this, we'll need a new event handler: .on(). You can think of .on() as a 
+general handler that takes the event, its selector, and an action as inputs.
+The syntax looks like this:
+$(document).on('event', 'selector', function() {
+    Do something!
+});
+In this case, 'event' will be 'click', 'selector' will be '.item', and the 
+thing we'll want to do is call .remove() on this.
+*/
+//Example
+$(document).ready(function(){
+    $('#button').click(function(){
+        var toAdd = $('input[name=checkListItem]').val();
+        $('.list').append('<div class="item">' + toAdd + '</div>');
+        $(document).on('click', '.item', function(){
+            $(this).remove();
+        });
+    });
+});
+
+
+
+
+
 
 
 
