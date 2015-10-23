@@ -229,6 +229,85 @@ $(document).ready(function(){
 
 
 
+//*****************MORE EVENT HANDLING*****************************
+
+//COMBINING THE click AND hover events
+$(document).ready(function(){
+    $('div').hover(function(){
+        $('div').addClass('red');
+    });
+    $('div').click(function(){
+        $('div').fadeOut('fast');
+    });
+});
+
+
+
+//The double click event
+$(document).ready(function(){
+    $('div').dblclick(function(){
+        $(this).fadeOut('fast');
+    });
+});
+
+
+
+//Hovering in and out, adding and removing a class when you hover in and out
+$(document).ready(function(){
+
+  $('div').hover(
+    function(){
+        $(this).addClass('active');
+    },
+    function(){
+        $(this).removeClass('active');
+    }
+  );
+});
+
+
+
+//Focus event, used in form input elements, ex-when clicked into a input area
+$(document).ready(function(){
+    $('input[name=name]').focus(function(){
+        $(this).css('outline-color', 'red');
+    });
+});
+
+
+
+//simple animation on a div element
+$(document).ready(function(){
+    $(document).keydown(function(){
+        $('div').animate({left:'+=10px'}, 50);
+    });
+});// here keydowm is the event, and animate is the effect
+
+
+
+//animation to move an image on a screen using arrow-keys
+$(document).ready(function() {
+    $(document).keydown(function(key) {
+        switch(parseInt(key.which,10)) {
+			// Left arrow key pressed
+			case 37:
+				$('img').animate({left: "-=10px"}, 'fast');
+				break;
+			// Up Arrow Pressed
+			case 38:
+			    $('img').animate({top: "-=10px"}, 'fast');
+				break;
+			// Right Arrow Pressed
+			case 39:
+			    $('img').animate({left: "+=10px"}, 'fast');
+				break;
+			// Down Arrow Pressed
+			case 40:
+			    $('img').animate({top: "+=10px"}, 'fast');
+				break;
+		}
+	});
+});
 
 
 
