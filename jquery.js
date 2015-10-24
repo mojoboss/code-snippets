@@ -367,6 +367,52 @@ $(document).ready(function(){
 
 
 
+//###############################DOM TRAVERSING#################
+$("#ID").parent();   // thisa selects immediate parent of a dom element
+$("#ID").parents();  //this selects all the parents above the #ID element
+					 //$("#ID").parents('#yoyo');  ---> this selects parent with 
+					 //id yoyo.
+
+$("#ID").children(); // children is similar to parent, finds immediate children
+$("#ID").find();     // find is similar to parents(here it is for child elements). 
+					 //If attribute provided, selects that particular child element.
+$("#ID").siblings(); // finds siblings of a DOM element.
+
+
+
+
+
+//########################ADDING REMOVING DOM ELEMENTS######################
+// REMOVING AN ITEM
+var articleItems;
+articleItems = $('.article-item');// your code goes here!
+var list = articleItems.find('ul');
+list.remove(); // Its DIFFERENT FROM removeClass().
+
+// with attributes
+ul.children.remove('.bold');// passing attributes and removing a particular class.
+
+
+//INSERTING DOM ELEMENTS AS CHILDREN (just opposite of remove).
+.append()
+.prepend()
+.insertBefore()
+.insertAfter()
+
+
+
+//Example
+//Everything in jQuery javascript works as a DOM element. $('') ----> this has
+//to be used to refer to anything as a DOM element. Adding, removing html
+//elements, or anything is carried out using DOM elements
+var family1 = $('#family1');
+var family2 = $("<div id='family2'><h1>Family 2</h1></div>");
+var bruce = $(" <div id='bruce'><h2>Bruce</h2><div id='madison'><h3>Madison</h3></div> <div id='hunter'><h3>hunter</h3></div> </div>");
+var parent = family1.parent();
+parent.append(family2);
+family2.append(bruce);
+
+
 
 
 
