@@ -413,6 +413,16 @@ parent.append(family2);
 family2.append(bruce);
 
 
+//using each('p') to iterate over all p's (it could be anything)
+//example
+var list = $('article-list');
+$( "p" ).each(function( index ) {
+  var t =  $( this ).text() ;
+  var len = t.length;
+  t = t + " " + len;
+  $( this ).text(t) ;  
+});
+
 
 
 
