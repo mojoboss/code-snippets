@@ -1,0 +1,78 @@
+/*
+RESPONSIVE DESIGN WITH BOOTSTRAP
+To get started, we should nest all of our HTML in a div element with the class "container-fluid".
+*/
+
+
+/*Making an image responsive*/
+<img src="http://bit.ly/fcc-running-cats" class="img-responsive">
+
+
+
+
+/*Taking text at center and coloring it red
+By using the span element, one can put several elements together, 
+and even style different parts of the same element differently.
+*/
+<h2 class="red-text text-center">your text</h2>
+
+
+
+
+/*Use of span*/
+<p>Top 3 things cats <span class = "text-danger">hate</span></p>
+
+/*class="btn" makes it a butoon, and class btn-block makes it a block sized button*/
+<button class="btn btn-block">Like</button>
+
+
+
+/*Now this code is for three button type in bootstrap. Primary gives it a dark blue color, info light blue and
+btn-danger a dark red color*/
+<div class="row">
+   <div class="col-xs-4"> 
+       <button class="btn btn-block btn-primary">Like</button>
+   </div>
+   <div class="col-xs-4">
+       <button class="btn btn-block btn-info">Info</button>
+   </div>
+   <div class="col-xs-4">  
+       <button class="btn btn-block btn-danger">Delete</button>
+   </div>
+</div>
+
+/*##################################ADDING FONT AWESOME ICONS###################################*/
+/*  The i element was originally used to make other elements italic, but is now commonly used for icons. 
+    You add the Font Awesome classes to the i element to turn it into an icon, for example:
+                                <i class="fa fa-info-circle"> </i>
+*/
+<button class="btn btn-block btn-primary">      <i class="fa fa-thumbs-up"></i>  LIKE    </button>
+<button class="btn btn-block btn-primary">      <i class="fa fa-info-circle"></i>  INFO    </button>
+<button class="btn btn-block btn-primary">      <i class="fa fa-trash"></i>  DELETE    </button>
+<button class = "btn btn-primary" type="submit">  <i class="fa fa-paper-plane"></i>      Submit</button>
+
+
+/*Form input elements
+This required element has to be filledin
+placehlder text is the text that appears on the text field
+*/
+<input type="text" class="form-control" placeholder="cat photo URL" required></div>
+
+
+
+/*###################BOOTSTRAP WELLS######################*/
+/*Bootstrap has a class called well that can create a visual sense of depth for your columns.*/
+<div class="row">
+    <div class="col-xs-6">
+      <div class="well"></div>
+    </div>
+    <div class="col-xs-6">
+       <div class="well"></div>
+    </div>
+</div>
+
+
+
+
+
+
