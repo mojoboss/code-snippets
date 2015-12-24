@@ -6,8 +6,14 @@ To get started, we should nest all of our HTML in a div element with the class "
 
 /*Making an image responsive*/
 <img src="http://bit.ly/fcc-running-cats" class="img-responsive">
-
-
+/*Making a body background with image and also responsive*/
+body { 
+  background: url(images/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 
 /*Taking text at center and coloring it red
