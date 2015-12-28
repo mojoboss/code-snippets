@@ -1,5 +1,5 @@
 $(document).ready(function(){	
-	var users = ["freecodecamp", "medrybw"];
+	var users = ["freecodecamp", "medrybw", "freecodecamp", "freecodecamp"];
 
 	var offlinediv = '<div class="row"> \
 			<div class="col-md-12 col-xs-12 twitch"> \
@@ -27,42 +27,57 @@ $(document).ready(function(){
 			</div> \
 		</div>' ;
 
+	 var onlineUsers = [];
+	 var offlineUsers = [];
+	 var allUsers = [];
 	for(var i=0; i<users.length; i++){
 		var user = users[i];
 		var streamEndpoint = "https://api.twitch.tv/kraken/streams/" + user;
 		var userEndpoint = "https://api.twitch.tv/kraken/users/" + user;
-		$.getJSON( streamEndpoint)
-			.done(function( data ) {
-				var stream = data.stream;
-				if(stream == null){
-					$.getJSON(userEndpoint)
-						.done(function(dataUser){
-							//console.log(dataUser.display_name, dataUser.logo);
-							var temp = offlinediv;
-							temp = temp.replace("IMAGE", dataUser.logo);
-							temp = temp.replace("DESCRIPTION", "");
-							temp = temp.replace("USERNAME", dataUser.display_name);
-							//console.log(temp);
-							$('.tab').append(temp);
-						});
-				}
-				else{
-					$.getJSON(userEndpoint)
-						.done(function(dataUser){
-							//console.log(dataUser.display_name, dataUser.bio, dataUser.logo);
-							var temp = onlinediv;
-							temp = temp.replace("IMAGE", dataUser.logo);
-							temp = temp.replace("DESCRIPTION", dataUser.bio.slice(0, 25) + "..");
-							temp = temp.replace("USERNAME", dataUser.display_name);
-							//console.log(temp);
-							$('.tab').append(temp);
-						});
-				}
-			}); 
-
+		var tempData = {};
+		//json calls from here
+		$.ajax({
+	    	url: streamEndpoint,
+	    	async: false,
+	    	dataType: 'json',
+	    	success: function(data) {
+	    		tempData.stream = data.stream;
+	    	}
+    	});
+    	$.ajax({
+	    	url: userEndpoint,
+	    	async: false,
+	    	dataType: 'json',
+	    	success: function(data) {
+	    		tempData.logo = data.logo;
+				tempData.desc = data.bio.slice(0, 25) + "..";
+				tempData.username = data.display_name;
+	    	}
+    	});
+    	allUsers.push(tempData);
 	}// end of for loop
+	//console.log(allUsers);
+	for(var i=0; i<allUsers.length; i++){
+		var obj = allUsers[i];
+		if(obj.stream == null){
+			offlineUsers.push(obj);
+			var temp = offlinediv;
+			temp = temp.replace("IMAGE", obj.logo);
+			temp = temp.replace("USERNAME", obj.username);
+			temp = temp.replace("DESCRIPTION", "");
+			$(".tab").append(temp);
+		}
+		else{
+			onlineUsers.push(obj);
+			var temp = onlinediv;
+			temp = temp.replace("IMAGE", obj.logo);
+			temp = temp.replace("USERNAME", obj.username);
+			temp = temp.replace("DESCRIPTION", obj.desc);
+			$(".tab").append(temp);
+		}
+	}
 
+	
 });
-
 
 
