@@ -31,6 +31,14 @@ $(document).ready(function(){
 	 var onlineUsers = [];
 	 var offlineUsers = [];
 	 var allUsers = [];
+	 var onlineUsersSearch = [];
+	 var offlineUsersSearch = [];
+	 var allUsersSearch = [];
+	 //these are the variables to check which tab is currently being displayed, its used in displaying after search
+	 var all = true;
+	 var online = false;
+	 var offline = false;
+
 	for(var i=0; i<users.length; i++){
 		var user = users[i];
 		var streamEndpoint = "https://api.twitch.tv/kraken/streams/" + user;
@@ -60,7 +68,7 @@ $(document).ready(function(){
 	    		else	
 	    			tempData.logo = data.logo;
 	    		if(data.bio !== null)
-					tempData.desc = data.bio.slice(0, 25) + "..";
+					tempData.desc = data.bio.slice(0, 22) + "..";
 				else
 					tempData.desc = "";
 				tempData.username = data.display_name;
@@ -78,25 +86,78 @@ $(document).ready(function(){
     	else
     		onlineUsers.push(tempData);
 	}// end of for loop
-	console.log(allUsers);
-
+	//console.log(allUsers);
+	allUsersSearch = allUsers;
+	onlineUsersSearch = onlineUsers;
+	offlineUsersSearch = offlineUsers;
 	//it is called for the first time when the page loads
 	filldivs(allUsers);
 	//then the functon is called after click events
 	$("#allbutton").click(function(){
 		$(".userdiv").remove();
-		filldivs(allUsers);
+		filldivs(allUsersSearch);
+		all = true;
+		online = false;
+		offline = false;
 	});
 	$("#onlinebutton").click(function(){
 		$(".userdiv").remove();
-		filldivs(onlineUsers);
+		filldivs(onlineUsersSearch);
+		all = false;
+		online = true;
+		offline = false;
 	});
 	$("#offlinebutton").click(function(){
 		$(".userdiv").remove();
-		filldivs(offlineUsers);
+		filldivs(offlineUsersSearch);
+		all = false;
+		online = false;
+		offline = true;
 	});
 	
-	//function to fill the divs with user information stored in three array objects
+	//handler for search
+	$(".search").keyup(function(){
+		var key = $(".search").val();
+		key = key.trim();
+		if(key){  // if typed keyword is not empty, search for that key among all usernames
+			//console.log(true);
+			allUsersSearch = [];
+			onlineUsersSearch = [];
+			offlineUsersSearch = [];
+			for(var i=0; i<allUsers.length; i++){
+				var user = allUsers[i];
+				var index = user.channel.indexOf(key);
+				if(index >= 0){
+					allUsersSearch.push(user);
+					if(user.stream === null)
+						offlineUsersSearch.push(user);
+					else
+						onlineUsersSearch.push(user);
+				}	
+			}
+		}
+		else{
+			//console.log(false);
+			allUsersSearch = allUsers;
+			onlineUsersSearch = onlineUsers;
+			offlineUsersSearch = offlineUsers;
+		}
+		if(all){
+			$(".userdiv").remove();
+			filldivs(allUsersSearch);
+		}
+		else if(offline){
+			$(".userdiv").remove();
+			filldivs(offlineUsersSearch);
+		}
+		else if(online){
+			$(".userdiv").remove();
+			filldivs(onlineUsersSearch);
+		}
+	});
+
+
+	//function to fill the divs from user information stored in an array 
 	function filldivs(users){
 		for(var i=0; i < users.length; i++){
 			var obj = users[i];
@@ -118,8 +179,6 @@ $(document).ready(function(){
 			}
 		}
 	}
-
-
 });
 
 
