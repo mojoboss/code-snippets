@@ -32,23 +32,55 @@ body{
 }
 
 .story{
-	height: 225px ;
+	height: 310px ;
 	border: 3px solid white;
-	border-radius: 5%;
 	margin-left: 2.7%;
 	margin-top: 5%;
 	margin-bottom: 2%;
+  padding: 0px;
+  background: white;
 }
 
+.storyDetail{
+  background-color: white;
+  height: 54px;
+}
+
+.storyDetail h4{
+  color: blue;
+  margin-left: -10px;
+  margin-top: 2px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.storyDetail h5{
+  color: blue;
+  margin-left: 1px;
+  margin-top: -7px;
+  font-size: 16px;
+}
+
+.storyDetail h6{
+  color: blue;
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+.storyDetail i{
+  margin-left: -10px;
+}
 @media (max-width: 780px) {
     .story {
         margin-left: 35%;
+        max-height: 330px;
     }
 }
 
 @media (max-width: 980px) {
     .story {
         margin-left: 35%;
+        height: 400px;
     }
 }
 /*
