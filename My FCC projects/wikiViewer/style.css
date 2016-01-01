@@ -12,6 +12,7 @@ body{
 }
 
 .searchBox{
+  background-color: #E6E6E7;
   width: 100%;
   border-radius: 25px;
   height: 45px;
@@ -39,16 +40,13 @@ body{
 .story{
   background-color: #E6E6E7;
   margin-top: 20px;
-  -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;            
+  margin-bottom: 10px;          
 }
 
 .story:hover{
-  border: 2px solid red;
+  outline: 2px solid red;
   cursor: pointer;
+  background-color: #c5c5c9;
 }
 
 .story h3{
