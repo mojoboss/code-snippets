@@ -1,0 +1,41 @@
+/*
+font-family: 'Lobster', cursive;
+font-family: 'Slabo 27px', serif;
+*/
+
+/*This makes a responsive background image*/
+body{ 
+  background-color: #173151; 
+}
+.search{
+  margin-top: 20%;
+}
+
+.searchBox{
+  width: 100%;
+  border-radius: 25px;
+  height: 45px;
+  font-size: 36px;
+  vertical-align: middle;
+  line-height: 45px;
+  padding: 5px;
+}
+
+.searchIcon{
+   color: green;
+}
+
+
+#div1{
+  margin-left: 100%;
+  margin-top: 2px;
+}
+
+#div2{
+  padding-left: 10%;
+  width: 0%;
+}
+
+/*
+
+*/
