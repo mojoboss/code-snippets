@@ -4,20 +4,35 @@ $(document).ready(function(){
 				<p>BODY</p>\
 			</div></a>';
 	TriggerClick = 0;
+	$(".searchBox").fadeOut(0.001);
 	$(".btn").click(function(){
 	  if(TriggerClick==0){
 	       TriggerClick=1;
+	       $(".searchBox").fadeIn();
 	       $("#div2").animate({width:'60%'}, 400);
 	  }else{
-	       TriggerClick=0;
-	       $("#div2").animate({width:'0%'}, 400);
-	       $(".searchBox").val("");
+	       var value = $(".searchBox").val();
+	       value = value.trim();
+	       if(value.length ===0 ){
+	       	   TriggerClick=0;
+	       	   $("#div2").animate({width:'0%'}, 400);
+	       	   $(".searchBox").val("");
+	           $(".searchBox").fadeOut();
+	       }
+	       else
+	       	   populate();
 	  };
 	});
 
 	$(".searchBox").keypress(function(event) {
-    if (event.which == 13) {
-    	$("h1").animate({'margin-top':'2%'}, 400);
+	    if (event.which == 13) {
+	    	populate();	
+	    }//if ends here
+}); //key press event ends here
+
+//function to search wikipedia
+function populate(){
+	$("h1").animate({'margin-top':'2%'}, 400);
     	$(".story").remove();
     	var text = $(".searchBox").val();
         console.log(text);
@@ -40,8 +55,18 @@ $(document).ready(function(){
 				$(".divs").append(tempDiv);
 			});
 		});
-    }//if ends here
-}); //key press event ends here
+}
+//for auto-complete
+	 var availableWords = [
+	               "ActionScript",
+	               "Boostrap",
+	               "C",
+	               "C++",
+	               "Actionscript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL","ColdFusion","Erlang","Fortran","Groovy",
+	               "Haskell","Java","JavaScript","Lisp","Perl","PHP","Python","Ruby","Scala","Scheme"];
+    $( ".searchBox" ).autocomplete({
+       source: availableWords
+    });
 
 });
 
