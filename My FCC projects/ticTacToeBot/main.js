@@ -5,7 +5,7 @@ $(document).ready(function(){
 	$('#modalX').click(function(){  //click handlers for modal buttons
 		playerSymbol = 'X';
 		botSymbol = 'O';
-		console.log(playerSymbol, botSymbol, 'Xclicked');
+		//console.log(playerSymbol, botSymbol, 'Xclicked');
 	});
 	$('#modalO').click(function(){
 		playerSymbol = 'O';
@@ -13,7 +13,12 @@ $(document).ready(function(){
 		console.log(playerSymbol, botSymbol, 'Oclicked');
 	});
 
-
+	//click handler for divs, draws X or O on the div
+	$('.row div div').click(function(){
+		var val = $(this).html();
+		if(val !== 'X' || val !== 'O')
+		$(this).html(playerSymbol);
+	});
 	
 });
 
