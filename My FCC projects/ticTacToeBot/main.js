@@ -27,8 +27,10 @@ $(document).ready(function(){
 			if(val !== 'X' && val !== 'O'){
 				$(this).html(playerSymbol);
 				check();
-				window.setTimeout(botMove ,700);
-				window.setTimeout(check ,1000);
+				if(gameOn){
+					window.setTimeout(botMove ,700);
+					window.setTimeout(check ,1000);
+				}
 			}
 		}
 	});
@@ -36,12 +38,12 @@ $(document).ready(function(){
 	function setScore(symbol){
 		if(symbol == botSymbol){
 			botScore += 1;
-			$('#botScore').html("Bot's score: "+botScore);
+			$('#botScore').html("Bot's score : "+botScore);
 			return botScore;
 		}
 		else if(symbol == playerSymbol){
 			playerScore += 1;
-			$('#playerScore').html("Your score: "+playerScore);
+			$('#playerScore').html("Your score : "+playerScore);
 			return playerScore;
 		}
 	}
@@ -131,7 +133,7 @@ $(document).ready(function(){
 		else if(val1 !== "" &&val2 !== "" &&val3 !== "" &&val4 !== "" &&val5 !== "" &&val6 !== "" &&val7 !== "" &&val8 !== "" &&val9 !== ""){
 			gameOn = false;
 			$("#myModal").modal('show');
-			return null;
+			return true;
 		}
 		else
 			return false;
