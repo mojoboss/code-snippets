@@ -2,31 +2,49 @@ $(document).ready(function(){
 	var playerSymbol = null;
 	var botSymbol = null;
 	var gameOn = true;
+	var playerScore = 0;
+	var botScore = 0;
 	$("#myModal").modal('show'); //displays the modal after the page load
 	$('#modalX').click(function(){  //click handlers for modal buttons
 		playerSymbol = 'X';
 		botSymbol = 'O';
 		restart();
+		window.setTimeout(firstMove ,500); //bot makes first move
 		//console.log(playerSymbol, botSymbol, 'Xclicked');
 	});
 	$('#modalO').click(function(){
 		playerSymbol = 'O';
 		botSymbol = 'X';
 		restart();
+		window.setTimeout(firstMove ,500); //bot makes first move
 		//console.log(playerSymbol, botSymbol, 'Oclicked');
 	});
 
 	//click handler for divs, draws X or O on the div
 	$('.row div div').click(function(){
-		var val = $(this).html();
-		if(val !== 'X' && val !== 'O'){
-			$(this).html(playerSymbol);
-			check();
-			window.setTimeout(botMove ,700);
-			window.setTimeout(check ,1000);
+		if(gameOn){
+			var val = $(this).html();
+			if(val !== 'X' && val !== 'O'){
+				$(this).html(playerSymbol);
+				check();
+				window.setTimeout(botMove ,700);
+				window.setTimeout(check ,1000);
+			}
 		}
 	});
-	
+	//function to change score
+	function setScore(symbol){
+		if(symbol == botSymbol){
+			botScore += 1;
+			$('#botScore').html("Bot's score: "+botScore);
+			return botScore;
+		}
+		else if(symbol == playerSymbol){
+			playerScore += 1;
+			$('#playerScore').html("Your score: "+playerScore);
+			return playerScore;
+		}
+	}
 	//check whether X won or O
 	function check(){
 		var val1 = $('#id1').html();
@@ -40,6 +58,7 @@ $(document).ready(function(){
 		var val9 = $('#id9').html();
 		if(val1==val2 && val2==val3 && val1==val3 && val1!==""){
 			gameOn = false;
+			setScore(val1);
 			$("#myModal").modal('show');
 			$('#id1').css('background-color', 'green');
 			$('#id2').css('background-color', 'green');
@@ -48,6 +67,7 @@ $(document).ready(function(){
 		}
 		else if(val4==val5 && val5==val6 && val4==val6 && val4!==""){
 			gameOn = false;
+			setScore(val4);
 			$("#myModal").modal('show');
 			$('#id4').css('background-color', 'green');
 			$('#id5').css('background-color', 'green');
@@ -56,6 +76,7 @@ $(document).ready(function(){
 		}
 		else if(val7==val8 && val8==val9 && val7==val9 && val7!==""){
 			gameOn = false;
+			setScore(val7);
 			$("#myModal").modal('show');
 			$('#id7').css('background-color', 'green');
 			$('#id8').css('background-color', 'green');
@@ -64,6 +85,7 @@ $(document).ready(function(){
 		}
 		else if(val1==val4 && val4==val7 && val1==val7 && val1!==""){
 			gameOn = false;
+			setScore(val1);
 			$("#myModal").modal('show');
 			$('#id1').css('background-color', 'green');
 			$('#id4').css('background-color', 'green');
@@ -72,6 +94,7 @@ $(document).ready(function(){
 		}
 		else if(val2==val5 && val5==val8 && val2==val8 && val2!==""){
 			gameOn = false;
+			setScore(val2);
 			$("#myModal").modal('show');
 			$('#id2').css('background-color', 'green');
 			$('#id5').css('background-color', 'green');
@@ -80,6 +103,7 @@ $(document).ready(function(){
 		}
 		else if(val3==val6 && val6==val9 && val3==val9 && val3!==""){
 			gameOn = false;
+			setScore(val3);
 			$("#myModal").modal('show');
 			$('#id3').css('background-color', 'green');
 			$('#id6').css('background-color', 'green');
@@ -88,6 +112,7 @@ $(document).ready(function(){
 		}
 		else if(val1==val5 && val5==val9 && val1==val9 && val1!==""){
 			gameOn = false;
+			setScore(val1);
 			$("#myModal").modal('show');
 			$('#id1').css('background-color', 'green');
 			$('#id5').css('background-color', 'green');
@@ -96,6 +121,7 @@ $(document).ready(function(){
 		}
 		else if(val3==val5 && val5==val7 && val3==val7 && val3!==""){
 			gameOn = false;
+			setScore(val3);
 			$("#myModal").modal('show');
 			$('#id3').css('background-color', 'green');
 			$('#id5').css('background-color', 'green');
@@ -105,6 +131,7 @@ $(document).ready(function(){
 		else if(val1 !== "" &&val2 !== "" &&val3 !== "" &&val4 !== "" &&val5 !== "" &&val6 !== "" &&val7 !== "" &&val8 !== "" &&val9 !== ""){
 			gameOn = false;
 			$("#myModal").modal('show');
+			return null;
 		}
 		else
 			return false;
@@ -132,7 +159,30 @@ $(document).ready(function(){
 		$('#id9').css('background-color', 'transparent');	
 		gameOn = true;
 	}
-
+	//makes the bot's first move
+	function firstMove(){
+		var ran = Math.ceil(Math.random()*10);
+		if(ran == 1){
+			$('#id1').html(botSymbol);
+			gameOn = true;
+		}
+		else if(ran == 3){
+			$('#id3').html(botSymbol);	
+			gameOn = true;
+		}
+		else if(ran == 7){
+			$('#id7').html(botSymbol);	
+			gameOn = true;
+		}
+		else if(ran == 9){
+			$('#id9').html(botSymbol);	
+			gameOn = true;
+		}
+		else{
+			$('#id5').html(botSymbol);	
+			gameOn = true;
+		}
+	}
 	//makes the bot move
 	function botMove(){
 		if(gameOn){
