@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<!--Fonts-->
+	<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container-fluid game">
+		<div class="row buttons">
+			<div class="col-md-6 col-xs-6">
+				<div class="button" id="green"></div>
+			</div>
+			<div class="col-md-6 col-xs-6">
+				<div class="button" id="red"></div>
+			</div>
+		</div>
+		<div class="row buttons">
+			<div class="col-md-6 col-xs-6">
+				<div class="button" id="yellow"></div>
+			</div>
+			<div class="col-md-6 col-xs-6">
+				<div class="button" id="blue"></div>
+			</div>
+		</div>
+		<!--No of Steps display-->
+		<div class="row">
+			<div class="col-md-12 col-xs-12">
+				<div class="steps">0</div>
+			</div>
+		</div>
+		<!--Strict mode toggle button-->
+		<div class="row toggle">
+			<div class="col-md-12 col-xs-12">
+				<div class="mode" id="strict">Strict Mode</div>
+			</div>
+		</div>
+		<!--On/Off toggle button-->
+		<div class="row toggle">
+			<div class="col-md-12 col-xs-12">
+				<div class="mode" id="onoff">ON / OFF</div>
+			</div>
+		</div>
+		<h1 class="text-center" style="font-weight:bold;">SIMON</h1>
+	</div>
+<!--JS-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

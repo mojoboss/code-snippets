@@ -1,0 +1,100 @@
+/*
+font-family: 'Lobster', cursive;
+font-family: 'Slabo 27px', serif;
+*/
+
+/*This makes a responsive background image*/
+body{ 
+  background-color: #b4abd3; 
+}
+
+.game{ 
+  background: url('https://s-media-cache-ak0.pinimg.com/736x/35/68/f3/3568f38787065b22363268c810aa1189.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 500px;
+  height: 600px;
+  margin-top: 30px;
+  box-shadow: 5px 5px 5px black;
+  border-radius: 25px;
+  border: 3px solid black;
+}
+.button{
+	width: 200px;
+	height: 150px;
+	border:5px solid black;
+	margin-top: 10px;
+	border-radius: 30px;
+	box-shadow: black 3px 3px 3px;
+
+}
+
+#green{
+	background-color: green;
+	margin-left: 22px;
+}
+#red{
+	background-color: red;
+	margin-left: -10px;
+}
+#yellow{
+	background-color: yellow;
+	margin-left: 22px;
+}
+#blue{
+	background-color: blue;
+	margin-left: -10px;
+}
+
+.mode{
+	margin-left: 180px;
+	margin-top: 20px;
+	width: 100px;
+	height: 50px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 50px;
+	border-radius: 10px;
+	color: white;
+	background-color: black;
+	box-shadow: black 3px 3px 3px;
+	border: 2px solid black;
+	cursor: pointer;
+}
+.modeon{
+	margin-left: 180px;
+	margin-top: 20px;
+	width: 100px;
+	height: 50px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 50px;
+	border-radius: 10px;
+	color: white;
+	background-color: #b20c0c;
+	box-shadow: black 3px 3px 3px;
+	border: 2px solid black;
+	cursor: pointer;
+}
+
+.steps{
+	margin-left: 30px;
+	margin-top: 10px;
+	width: 400px;
+	height: 50px;
+	font-weight: bold;
+	font-size: 36px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 50px;
+	border-radius: 5px;
+	color: white;
+	background-color: black;
+}
+/*
+
+*/
