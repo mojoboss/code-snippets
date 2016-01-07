@@ -32,19 +32,19 @@ body{
 }
 
 #green{
-	background-color: green;
+	background-color: #00A74A;
 	margin-left: 22px;
 }
 #red{
-	background-color: red;
+	background-color: #9F0F17;
 	margin-left: -10px;
 }
 #yellow{
-	background-color: yellow;
+	background-color: #CCA707;
 	margin-left: 22px;
 }
 #blue{
-	background-color: blue;
+	background-color: #094A8F;
 	margin-left: -10px;
 }
 
