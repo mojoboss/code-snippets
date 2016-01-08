@@ -50,6 +50,7 @@ $(document).ready(function(){
 ['https://s3.amazonaws.com/freecodecamp/simonSound1.mp3', 'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3',
 'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3', 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'];
 	var buzzerSound = 'http://www.misc.it/suoni/campanello.wav';
+	
 	//function to play a sound
 	function play(sound){
 		var audio = new Audio(sound);
@@ -78,6 +79,13 @@ $(document).ready(function(){
 		window.setTimeout(function(){$('#blue').css('background-color', '#094A8F');}, 500);
 	}
 
+	function levelUp(){
+		level++;
+		$('.steps').html(level);
+		tempSequence = [];
+		if(level == 5 || level == 9 || level == 13)
+			interval -= 500;
+	}
 	//function to respond to user click events
 	$('#green').mouseup(function(){
 		if(on == true && start == true){
@@ -96,9 +104,7 @@ $(document).ready(function(){
 			else{
 				greenSound();
 				if(tempSequence.length == level){
-					level++;
-					tempSequence = [];
-					$('.steps').html(level);
+					levelUp();
 					window.setTimeout(playSequence, 1000);		
 				}
 			}
@@ -121,9 +127,7 @@ $(document).ready(function(){
 			else{
 				redSound();
 				if(tempSequence.length == level){
-					level++;
-					tempSequence = [];
-					$('.steps').html(level);
+					levelUp();
 					window.setTimeout(playSequence, 1000);		
 				}
 			}
@@ -146,9 +150,7 @@ $(document).ready(function(){
 			else{
 				yellowSound();
 				if(tempSequence.length == level){
-					level++;
-					tempSequence = [];
-					$('.steps').html(level);
+					levelUp();
 					window.setTimeout(playSequence, 1000);		
 				}
 			}
@@ -171,9 +173,7 @@ $(document).ready(function(){
 			else{
 				blueSound();
 				if(tempSequence.length == level){
-					level++;
-					tempSequence = [];
-					$('.steps').html(level);
+					levelUp();
 					window.setTimeout(playSequence, 1000);		
 				}
 			}
