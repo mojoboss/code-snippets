@@ -1,4 +1,9 @@
 $(document).ready(function(){	
+
+	//sequence of soundNodes
+	var sequence = [];
+	var level = 10;
+	var interval = 2500; // interval b/w sounds in ms. Decreases in 5, 9th and 13th level.
 	$('.mode').click(function(){
         $(this).toggleClass('modeon');
     });
@@ -50,8 +55,40 @@ $(document).ready(function(){
 		blueSound();
 	});
 
+	//function to create a list of length 20 contaning sound no. from 0 to 3
+	function makeSequence(){
+		var seq = [];
+		for(var i=0; i<20; i++){
+			var rand = Math.floor(Math.random() * 4);
+			seq.push(rand);
+		}
+		return seq;
+	}
 	
+	//function to play the sequence
+	function playSequence(){
+		var time = 1000;
+		for(var i=0; i<level; i++){
+			var sound = sequence[i]; //gets the random sound to be played
+			console.log(sound);
+			if(sound==0){
+				window.setTimeout(greenSound, time);
+			}
+			else if(sound==1){
+				window.setTimeout(redSound, time);
+			}
+			else if(sound==2){
+				window.setTimeout(yellowSound, time);
+			}
+			else if(sound==3){
+				window.setTimeout(blueSound, time);
+			}
+			time += interval;
+		}
+	}
 
+	sequence =  makeSequence();
+	playSequence();
 });
 
 
