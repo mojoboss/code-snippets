@@ -40,7 +40,8 @@ $(document).ready(function(){
 	$('.start').click(function(){
 		if(on == true && start == false){
 			start = true;
-        	$(this).toggleClass('onStart');
+        	//$(this).toggleClass('onStart');
+        	$('.start').css('background-color', 'red');
         	$('.steps').html(level);
         	playSequence();
 		}
@@ -50,7 +51,15 @@ $(document).ready(function(){
 ['https://s3.amazonaws.com/freecodecamp/simonSound1.mp3', 'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3',
 'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3', 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'];
 	var buzzerSound = 'http://www.misc.it/suoni/campanello.wav';
-	
+	var winSound = 'http://www.startrekdesktopwallpaper.com/lcars/sounds/223.wav';
+	//start a new game
+	function startGame(){
+		sequence = makeSequence();
+		tempSequence = [];
+		level = 1;
+		$('.steps').html(level);
+		interval = 2500;	
+	}
 	//function to play a sound
 	function play(sound){
 		var audio = new Audio(sound);
@@ -85,6 +94,11 @@ $(document).ready(function(){
 		tempSequence = [];
 		if(level == 5 || level == 9 || level == 13)
 			interval -= 500;
+		if(level == 21){
+			play(winSound);
+			$('.steps').html('You Won!!');
+			window.setTimeout(startGame, 500);
+		}
 	}
 	//function to respond to user click events
 	$('#green').mouseup(function(){
@@ -96,8 +110,7 @@ $(document).ready(function(){
 				if(!strict)
 					window.setTimeout(playSequence, 1000);
 				else{
-					level = 1;
-					$('.steps').html(level);
+					startGame();
 					window.setTimeout(playSequence, 1000);
 				}
 			}
@@ -119,8 +132,7 @@ $(document).ready(function(){
 				if(!strict)
 					window.setTimeout(playSequence, 1000);
 				else{
-					level = 1;
-					$('.steps').html(level);
+					startGame();
 					window.setTimeout(playSequence, 1000);
 				}
 			}
@@ -142,8 +154,7 @@ $(document).ready(function(){
 				if(!strict)
 					window.setTimeout(playSequence, 1000);
 				else{
-					level = 1;
-					$('.steps').html(level);
+					startGame();
 					window.setTimeout(playSequence, 1000);
 				}
 			}
@@ -165,8 +176,7 @@ $(document).ready(function(){
 				if(!strict)
 					window.setTimeout(playSequence, 1000);
 				else{
-					level = 1;
-					$('.steps').html(level);
+					startGame();
 					window.setTimeout(playSequence, 1000);
 				}
 			}
@@ -212,7 +222,7 @@ $(document).ready(function(){
 		}
 	}
 
-	//playSequence();
+	
 });
 
 
