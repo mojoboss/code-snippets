@@ -2,6 +2,8 @@ $(document).ready(function(){
 
 	//sequence of soundNodes
 	var sequence;
+	var WAITLIST = pressTimeSequence();
+	var turn = false;
 	var tempSequence;   //sequence to store user clicks
 	var level = 1;
 	//interval b/w sounds in ms. Decreases in 5, 9th and 13th level.
@@ -66,6 +68,20 @@ $(document).ready(function(){
 		audio.play();
 	}
 
+	//function to calculate time when a player can input his button press
+	function pressTimeSequence(){
+		var waitList = [0, 1500];
+		var interval = 2500;
+		for(var i=2; i<=20; i++){
+			if(i == 5 || i == 9 || i== 13)
+				interval -=500;
+			var total = 1000 + (i-1)*interval;   //it's an AP :P
+			waitList.push(total+500);
+		}
+		return waitList;
+	}
+	//console.log(pressTimeSequence());
+	//****************************
 	//functions to make button produce sound and glow
 	function greenSound(){
 		$('#green').css('background-color', '#48f971');
@@ -102,7 +118,7 @@ $(document).ready(function(){
 	}
 	//function to respond to user click events
 	$('#green').mouseup(function(){
-		if(on == true && start == true){
+		if(on == true && start == true && turn == true){
 			tempSequence.push(0);
 			if(tempSequence[tempSequence.length-1] !== sequence[tempSequence.length-1]){
 				play(buzzerSound);
@@ -124,7 +140,7 @@ $(document).ready(function(){
 		}
 	});
 	$('#red').mouseup(function(){
-		if(on == true && start == true){
+		if(on == true && start == true && turn == true){
 			tempSequence.push(1);
 			if(tempSequence[tempSequence.length-1] !== sequence[tempSequence.length-1]){
 				play(buzzerSound);
@@ -146,7 +162,7 @@ $(document).ready(function(){
 		}
 	});
 	$('#yellow').mouseup(function(){
-		if(on == true && start == true){
+		if(on == true && start == true && turn == true){
 			tempSequence.push(2);
 			if(tempSequence[tempSequence.length-1] !== sequence[tempSequence.length-1]){
 				play(buzzerSound);
@@ -168,7 +184,7 @@ $(document).ready(function(){
 		}
 	});
 	$('#blue').mouseup(function(){
-		if(on == true && start == true){
+		if(on == true && start == true && turn == true){
 			tempSequence.push(3);
 			if(tempSequence[tempSequence.length-1] !== sequence[tempSequence.length-1]){
 				play(buzzerSound);
@@ -203,6 +219,9 @@ $(document).ready(function(){
 	//function to play the sequence
 	function playSequence(){
 		var time = 1000;
+		$('.steps').html(level);
+		turn = false;
+		window.setTimeout(turnOn, WAITLIST[level]);
 		for(var i=0; i<level; i++){
 			var sound = sequence[i]; //gets the random sound to be played
 			//console.log(sound);
@@ -222,6 +241,10 @@ $(document).ready(function(){
 		}
 	}
 
+	function turnOn(){
+		turn = true;
+		$('.steps').html("Your Turn");
+	}
 	
 });
 
