@@ -1,0 +1,98 @@
+1.INSTALL/UPDATE npm
+	$ npm install npm -g
+
+
+
+2.ACCOUNT ON npmjs.com
+npm is best when you can be a part of it.  That starts with
+creating an account.
+it'll create a real account, with a page
+on npmjs.com and the ability to publish packages that real live
+humans can install and enjoy.
+###############################################################
+To create an account - 
+	run `npm adduser`
+To see who you're logged in as, 
+	run `npm whoami`
+###############################################################
+npm whoami can be run only after creating an acount.
+
+
+
+3.package.json CONTAINS INFORMATION ABOUT THE PROJECT
+	npm helps you build projects, but for npm to be able to do that, you need
+	to tell npm a little bit about your project. You can tell npm about your
+	project in a file called package.json.
+################################################################
+	Run `npm init --scope=<username>`, and replace <username> with the username. PUT USERNAME IN ""
+	This will create a package.json file.
+################################################################
+
+
+
+4.INSTALLING A DEPENDENCY
+	The first thing that most people do with npm is install a dependency.
+	Dependencies are fetched from the registry, and unpacked in the `node_modules`
+	folder.
+#################################################################
+	To install a module, use the `npm install <modulename>` command.
+#################################################################
+	IN CASE OF SOME ERROR
+	Your dependencies should be listed in the package.json file in an
+	object called 'dependencies'.  However, when we installed '@linclark/pkg',
+	we didn't update the package.json file to list out this dependency.
+	So, it shows up as 'extraneous', warning us that we have something
+	there that we haven't listed as a dependency.
+	The easiest way to avoid this situation is to use the `--save` flag
+	when installing dependencies.  You might not want to do this with
+	things that you're just trying out, but when you decide on something,
+	you can use this flag to update your package.json file easily.
+	Try running `npm install @linclark/pkg --save` to install the module, and also
+	update your package.json file at the same time.
+##################################################################
+npm install @linclark/pkg --save
+##################################################################
+
+
+5.Now you've installed something, and used `npm ls` to show what's going on.
+	If you look at the package.json file, it has this rather odd bit in it:
+
+	  "scripts": {
+	    "test": "echo \"Error: no test specified\" && exit 1"
+	  },
+
+npm can be used as a task runner, and almost every module and project
+will have a test script that runs to make sure everything is good.  In
+order to help remind you to do this, npm puts a "always failing" test
+in there by default.
+First, create a file called `test.js`.  It doesn't have to do anything,
+really.  (This is npm class, not testing class.)  But it has to exit
+without throwing an error, or else the test fails.
+Then, edit your `package.json` file to make your scripts section look like
+this instead:
+  "scripts": {
+    "test": "node test.js"
+  },
+
+
+6.  So, we've created a package.json file, but it's missing a few things
+	that people usually expect.  If you type `npm install`, you'll see
+	something like this:
+	npm WARN package.json mojoboss@1.0.0 No description
+	npm WARN package.json mojoboss@1.0.0 No repository field.
+	npm WARN package.json mojoboss@1.0.0 No README data
+	Before we can share this work of art with the world, we need to make
+	it a bit more polished so that people know how to use it.
+	First, create a README.md file, with a bit of words in it.
+	Then, add a "repository" field in your package.json file, with a url
+	where people can access the code.
+	You can edit your package.json file by hand, or run `npm init` again.
+
+
+
+7.	Luckily, that is not a problem for npm, because it's very easy for all
+	npm users to publish their modules and share them with the world.
+	Packages get into the registry by using the `npm publish` command.
+
+
+8. Use npm version to check the version.

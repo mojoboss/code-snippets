@@ -69,6 +69,8 @@ $(document).ready(function(){
 	}
 
 	//function to calculate time when a player can input his button press
+	//this returns a list whose index corresponds to the level number, and its value is the
+	//number of seconds for which the player can't press button, as computer is playing the sound
 	function pressTimeSequence(){
 		var waitList = [0, 1500];
 		var interval = 2500;
