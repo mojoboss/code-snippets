@@ -1,7 +1,11 @@
 1.INSTALL/UPDATE npm
 	$ npm install npm -g
+	OR in ubuntu, go to root mode and
+	apt-get install nodejs (it'll install latest node and npm)
 
-
+(after using "npm init", there's a hidden file called .npmrc  . Set the registry and proxy(if using a proxy) with
+registry = http://registry.npmjs.org/
+proxy = http://USERNAME:PASSWORD@IP:PORT) if default settings don't work.
 
 2.ACCOUNT ON npmjs.com
 npm is best when you can be a part of it.  That starts with
@@ -95,4 +99,30 @@ this instead:
 	Packages get into the registry by using the `npm publish` command.
 
 
-8. Use npm version to check the version.
+8. Use npm version to check the version. Modify the version using
+##############################################################################
+	npm version newVersion
+##############################################################################
+Version numbers in npm follow a standard called "SemVer".  This stands
+for "Semantic Version".  The specification for this standard can be
+found at http://semver.org.
+
+The tl;dr version is that for a version like this:
+
+  1.2.3
+  ^ ^ ^
+  | | `-- Patch version. Update for every change.
+  | `---- Minor version. Update for API additions.
+  `------ Major version. Update for breaking API changes.
+
+npm has a special command called `npm version` which will update your
+package.json file for you, and also commit the change to git if your
+project is a git repository.  You can learn more at `npm help version`.
+
+Or, if you don't trust the machines, you can open up your package.json
+file by hand, and put some new numbers in the "version" field.
+
+The npm registry won't let you publish a new release of your package
+without updating the version number!  Ever!  So, get used to the idea of
+bumping the version whenever you want to publish, even if the change is
+really minor.
