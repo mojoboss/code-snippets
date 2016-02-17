@@ -2,11 +2,17 @@
 	$ npm install npm -g
 	OR in ubuntu, go to root mode and
 	apt-get install nodejs (it'll install latest node and npm)
-
+###################
+set proxy and registry with(in the working directory)
+(
+npm config set proxy http://USERNAME:PASSWORD@IP:PORT
+npm config set registry http://registry.npmjs.org/
+)
+OR
 (after using "npm init", there's a hidden file called .npmrc  . Set the registry and proxy(if using a proxy) with
 registry = http://registry.npmjs.org/
 proxy = http://USERNAME:PASSWORD@IP:PORT) if default settings don't work.
-
+###################
 2.ACCOUNT ON npmjs.com
 npm is best when you can be a part of it.  That starts with
 creating an account.
