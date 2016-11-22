@@ -1,0 +1,6 @@
+mark johnson,waffle iron,80,2
+mark johnson,blender,200,1
+mark johnson,knife,10,4
+nikita smith,waffle iron,80,1
+nikita smith,knife,10,2
+nikita smith,pot,20,3
